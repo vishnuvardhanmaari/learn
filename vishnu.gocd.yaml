@@ -27,6 +27,6 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - GOURI IS BOT
+                - checking commits
                 command: echo
                 run_if: passed
