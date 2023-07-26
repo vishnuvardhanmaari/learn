@@ -27,6 +27,6 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - HII VISHNU HOW ARE YOU
+                - GOURI IS BOT
                 command: echo
                 run_if: passed
