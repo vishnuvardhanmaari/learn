@@ -1,0 +1,32 @@
+format_version: 10
+pipelines:
+  vishnu:
+    group: defaultGroup
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      git-fbc3aa3:
+        git: https://github.com/vishnuvardhanmaari/learn.git
+        username: vishnuvardhanmaari
+        shallow_clone: true
+        auto_update: true
+        branch: vishnu
+        encrypted_password: AES:OFaEPFv0XDGCpdz3RUh10g==:17zUBAWljnR2MxTS2ZD6Fg==
+    stages:
+    - commands:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          com-job:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - HII
+                command: echo
+                run_if: passed
