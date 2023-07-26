@@ -27,6 +27,6 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - checking commits
+                - HII sanjay
                 command: echo
                 run_if: passed
