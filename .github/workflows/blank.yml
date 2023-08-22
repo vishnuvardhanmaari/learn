@@ -1,0 +1,54 @@
+name: Quality Check
+
+on:
+  push:
+    branches:
+      - master
+      - uat
+      - 'release-**'
+    tags:
+      - "*"
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - master
+      - uat
+      - 'release-**'
+      - '!**-qa'
+      - '!**-sit'
+  workflow_dispatch:
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    env:
+      MAGENTO_DIR: 'hello'
+      EXECUTABLE_FOLDER: 'shell'
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Checkout CI repo
+        uses: actions/checkout@v2
+        with:
+          repository: vishnuvardhanmaari/aws
+          token: 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
+          path: ${{ env.MAGENTO_DIR }}
+
+      - name: Get branch names
+        id: branch-name
+        uses: tj-actions/branch-names@v4.5
+
+      - name: Defining the Env variable through _CI folder
+        env: 
+          OVERRIDE_PHP_FLAG: Hii
+        working-directory: ${{ env.MAGENTO_DIR }}
+        run: |
+          if [ ${{ env.OVERRIDE_PHP_FLAG }} ]; then   
+            echo "PHP_VERSION= 7.4" >> file 
+            
+          else 
+            echo "PHP_VERSION=8.1" >> service
+            
+          fi
+
+     
